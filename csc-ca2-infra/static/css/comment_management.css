@@ -1,0 +1,15 @@
+
+.image {
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+}
+
+#img {
+    margin: 1em 1em;
+}
+
+#talent {  
+    margin: 0 4em;  
+    text-align: center;  
+}

@@ -1,0 +1,16 @@
+requests
+certifi
+chardet
+Click
+idna
+itsdangerous
+Jinja2
+MarkupSafe
+stripe
+toml
+urllib3
+Werkzeug
+pymysql
+# google-cloud
+# google-cloud-vision
+pyjwt

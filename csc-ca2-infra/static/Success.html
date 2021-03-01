@@ -1,0 +1,144 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSC_Assignment_2</title>
+    <link rel="icon" href="dev/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/site.css" />
+
+    <link rel="stylesheet" href="css/checkout.css" />
+
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" href="Index.html">CSC_Assignment_2</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="Index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="Privacy.html">Privacy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="Upload.html">Create Talent</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            <!DOCTYPE html>
+            <html lang="en">
+
+            <head>
+                <meta charset="utf-8" />
+                <title>Register Success</title>
+                <meta name="description" content="Successfully registered" />
+            </head>
+
+            <body>
+                <div class="togethere-background"></div>
+                <div class="sr-root">
+                    <div class="sr-main">
+                        <header class="sr-header">
+                            <div class="sr-header__logo"></div>
+                        </header>
+                        <div class="sr-payment-summary completed-view">
+                            <h1>Your payment succeeded</h1>
+                        </div>
+                        <div class="completed-view-section">
+
+                            <a class="btn btn-primary" href="Index.html">Back to Home</a>
+
+                            <form id="manage-billing-form">
+                                <button id="manageBillBtn" class="btn btn-primary">Manage Billing</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="sr-content">
+                    </div>
+                </div>
+            </body>
+
+            </html>
+
+
+
+
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2021 - CSC_Assignment_2 - <a href="Privacy.html">Privacy</a>
+        </div>
+    </footer>
+
+    <script src="lib/jquery/dist/jquery.min.js"></script>
+    <script src="lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/site.js?v=4q1jwFhaPaZgr8WAUSrux6hAuh0XDg9kPS3xIVq36I0"></script>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const sessionId = urlParams.get("session_id");
+        let customerId;
+
+        if (sessionId) {
+            fetch("/dev/api/checkout-session?sessionId=" + sessionId, {
+                credentials: "include"
+            })
+                .then(function (response) {
+                    if(!response.ok){
+                        throw Error(response.statusText);
+                    }
+                    return response.json();
+                })
+                .then((json) => { return json.data })
+                .then(function (session) {
+                    customerId = session.customer;
+                })
+                .catch(function (e) {
+                    console.log('Error when fetching Checkout session', e);
+                });
+        }
+
+        const manageBillingForm = document.querySelector('#manage-billing-form');
+        manageBillingForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            fetch('/dev/api/customer-portal', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                credentials: "include",
+                body: JSON.stringify({
+                    sessionId: sessionId
+                }),
+            })
+                .then((response) => response.json())
+                .then((json) => { return json.data })
+                .then((data) => {
+                    window.location.href = data.url;
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+        });
+    </script>
+
+</body>
+
+</html>

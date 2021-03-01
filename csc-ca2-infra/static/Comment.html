@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Comment Page</title>
+    <link rel="icon" href="dev/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="lib/jquery-comments/css/jquery-comments.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/comment_management.css" />
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" href="Index.html">CSC_Assignment_2</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="Index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="Privacy.html">Privacy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="createTalent nav-link text-dark" href="Upload.html" style="display: none;">Create
+                                Talent</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="d-flex">
+                    <div class="nav-item">
+                        <a class="loginBtn btn btn-primary" href="https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=513953757456-r1tjdsp0r9o8ncui2ocssfeo50tcdb4p.apps.googleusercontent.com&scope=openid%20profile%20email&redirect_uri=https://ab4z15tt79.execute-api.us-east-1.amazonaws.com/dev/Redirect.html">Login with Google</a>
+                    </div>
+                    <div class="nav-item pr-2">
+                        <a class="manageBillBtn btn btn-info" href="/" style="display: none;">Manage Billing</a>
+                    </div>
+                    <div class="nav-item">
+                        <a class="logoutBtn btn btn-primary" href="/" style="display: none;">Log Out</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="row">
+        <div class="image">
+            <img id="img">
+        </div>
+    </div>
+    <div class="row">
+        <div id="talent"></div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div id="commentsContainer"></div>
+        </div>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2021 - CSC_Assignment_2 - <a href="Privacy.html">Privacy</a>
+        </div>
+    </footer>
+    <script src="lib/jquery/dist/jquery.min.js"></script>
+    <script src="lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/jquery-comments/js/jquery-comments.min.js"></script>
+    <script src="js/comment_management.js" asp-append-version="true"></script>
+
+</body>
+
+</html>

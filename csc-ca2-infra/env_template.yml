@@ -1,0 +1,27 @@
+# Stripe Keys
+stripe_publishable_key: ""
+stripe_secret_key: ""
+
+#Stripe API version
+stripe_api_version: ""
+
+# Required to run Webhook
+stripe_webhook_secret: ""
+
+# Stripe subscription data
+free_price_id: ""
+pro_price_id: ""
+
+# Route
+stripe_url: ""
+
+# RDS credentials
+rds_host: ""
+rds_user: ""
+rds_password: ""
+rds_database: ""
+rds_sg_id: ""
+
+# OAuth credentials
+oauth_client_id: ""
+oauth_client_secret: ""
